@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  langflow:
+    image: logspace/langflow:latest
+    ports:
+      - "7860:7860"
+    environment:
+      - LANGFLOW_SUPERUSER=admin
+      - LANGFLOW_SUPERUSER_PASSWORD=admin
+      - LANGFLOW_DATABASE_URL=sqlite:///data/langflow.db
+      - LANGFLOW_HEADLESS=true
+    volumes:
+      - langflow_data:/app/data
+    restart: unless-stopped
+
+volumes:
+  langflow_data: 
